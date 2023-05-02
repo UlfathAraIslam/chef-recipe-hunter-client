@@ -7,8 +7,8 @@ const ChefCard = ({ chef }) => {
     return (
         <Row  className="mb-4">
             <Col>
-                <Card>
-                    <Card.Img variant="top" src={chef.image} />
+                <Card className='h-100'>
+                    <Card.Img style={{ height: '250px'}} variant="top" src={chef.picture} />
                     <Card.Body>
                         <Card.Title>{chef.name}</Card.Title>
                         <Card.Text>
@@ -18,7 +18,7 @@ const ChefCard = ({ chef }) => {
                             Number of Recipes: {chef.numberOfRecipes}
                         </Card.Text>
                         <Card.Text>
-                            Likes: {chef.likes}
+                            Likes: {chef.rating}
                         </Card.Text>
                         <Button variant="primary">View Recipes</Button>
                     </Card.Body>
