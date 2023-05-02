@@ -1,0 +1,27 @@
+.event {
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .event-description {
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  
+  .event-date-time {
+    font-size: 16px;
+    color: #888;
+    margin-top: 10px;
+  }
+  
+  .event-location {
+    font-size: 16px;
+    color: #888;
+    margin-top: 10px;
+  }
+  
+  .event-button {
+    margin-top: 20px;
+  }
+  
