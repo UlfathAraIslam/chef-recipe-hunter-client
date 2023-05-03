@@ -19,7 +19,7 @@ const router = createBrowserRouter([
             {
                 path: '/chefs',
                 element: <Chefs></Chefs>,
-                loader: () => fetch(`http://localhost:5000/chefs`).then(res => res.json())
+                loader: () => fetch(`https://b7a10-chef-recipe-hunter-server-side-ulfath-ara-ulfatharaislam.vercel.app/chefs`).then(res => res.json())
             },
             {
                 path: '/blog',
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
             {
                 path: ':id',
                 element: <Recipies></Recipies>,
-                loader: ({ params }) => fetch(`http://localhost:5000/chefs/${params.id}`)
+                loader: ({ params }) => fetch(`https://b7a10-chef-recipe-hunter-server-side-ulfath-ara-ulfatharaislam.vercel.app/chefs/${params.id}`)
             }
         ]
     },

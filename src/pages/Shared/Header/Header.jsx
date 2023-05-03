@@ -1,23 +1,18 @@
-import React from 'react';
-import { Button, Container, Nav, Navbar } from 'react-bootstrap';
-import './Header.css';
-import { Link} from 'react-router-dom';
+import React from 'react'
+import { Container } from 'react-bootstrap';
+import './Header.css'
 
 const Header = () => {
-    return (
-        <Navbar collapseOnSelect expand="lg"variant="light">
-            <Container>
-                <Navbar.Brand className='brand-name'>Japanese cousine</Navbar.Brand>
-                <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                <Navbar.Collapse id="responsive-navbar-nav">
-                    <Nav className="me-auto">
-                        <Link to='/' className='text-decoration-none text-secondary'  style={{ marginRight: '50px',  }}><Nav>Home</Nav></Link>
-                        <Link to='/blog' className='text-decoration-none text-secondary'><Nav>blog</Nav></Link>
-                    </Nav>
-                    <Button variant="secondary">Login</Button>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+
+return (
+
+        <Container fluid className='banner'>
+
+            <div className='banner-text'>
+                <h1>Welcome to Japanese cousine</h1>
+                <p>Discover new flavors and tastes</p>
+            </div>
+        </Container>
     )
 };
 
