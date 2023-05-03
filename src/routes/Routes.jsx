@@ -21,11 +21,12 @@ const router = createBrowserRouter([
                 element: <Chefs></Chefs>,
                 loader: () => fetch(`https://b7a10-chef-recipe-hunter-server-side-ulfath-ara-ulfatharaislam.vercel.app/chefs`).then(res => res.json())
             },
-            {
-                path: '/blog',
-                element: <Blog></Blog>
-            }
+
         ]
+    },
+    {
+        path: '/blog',
+        element: <Blog></Blog>
     },
     {
         path: '/recipies',
