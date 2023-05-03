@@ -5,6 +5,7 @@ import RecipiesLayout from "../layouts/RecipiesLayout";
 import Recipies from "../pages/Recipies/Recipies/Recipies";
 import Chefs from "../pages/Home/Chefs/Chefs";
 import Blog from "../pages/Blog/Blog";
+import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
 
 const router = createBrowserRouter([
     {
@@ -16,13 +17,13 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/',
+                path: '/chefs',
                 element: <Chefs></Chefs>,
                 loader: () => fetch(`http://localhost:5000/chefs`).then(res => res.json())
             },
             {
                 path: '/blog',
-                element: <Blog></Blog> 
+                element: <Blog></Blog>
             }
         ]
     },
@@ -33,10 +34,15 @@ const router = createBrowserRouter([
             {
                 path: ':id',
                 element: <Recipies></Recipies>,
-                loader: ({params}) => fetch(`http://localhost:5000/chefs/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/chefs/${params.id}`)
             }
         ]
+    },
+    // The 404 route definition should be at the end
+    {
+        path: '*',
+        element: <NotFoundPage></NotFoundPage>
     }
-])
+]);
 
 export default router;
