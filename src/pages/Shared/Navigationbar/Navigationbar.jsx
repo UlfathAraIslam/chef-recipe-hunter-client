@@ -2,12 +2,13 @@ import React, { useContext } from 'react';
 import { Button, Container, Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
+import './Navigationbar.css';
 
 const Navigationbar = () => {
     const { user } = useContext(AuthContext);
     return (
-        <div>
-            <Navbar collapseOnSelect expand="lg" variant="light">
+        <>
+            <Navbar collapseOnSelect expand="lg" className='navbar'>
                 <Container>
                     <Navbar.Brand className='brand-name'>Japanese cousine</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -21,7 +22,7 @@ const Navigationbar = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-        </div>
+        </>
     );
 };
 

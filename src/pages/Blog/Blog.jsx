@@ -1,8 +1,12 @@
 import React from 'react';
+import Navigationbar from '../Shared/Navigationbar/Navigationbar';
+import Footer from '../Shared/Footer/Footer';
 
 const Blog = () => {
     return (
         <div className='container'>
+            <Navigationbar></Navigationbar>
+            <div className='mt-5'>
             <div>
                 <h3>Differences between uncontrolled and controlled components.</h3>
                 <p>
@@ -65,6 +69,8 @@ const Blog = () => {
                     Creating a custom hook can help you to organize your code better, make it easier to test, and reduce code duplication.
                 </p>
             </div>
+            </div>
+            <Footer/>
         </div>
     );
 };
