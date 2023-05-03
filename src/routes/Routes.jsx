@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home/Home";
 import RecipiesLayout from "../layouts/RecipiesLayout";
 import Recipies from "../pages/Recipies/Recipies/Recipies";
 import Chefs from "../pages/Home/Chefs/Chefs";
+import Blog from "../pages/Blog/Blog";
 
 const router = createBrowserRouter([
     {
@@ -15,15 +16,18 @@ const router = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/chefs',
+                path: '/',
                 element: <Chefs></Chefs>,
                 loader: () => fetch(`http://localhost:5000/chefs`).then(res => res.json())
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog> 
             }
-            
         ]
     },
     {
-        path: '/recipies/',
+        path: '/recipies',
         element: <RecipiesLayout></RecipiesLayout>,
         children: [
             {

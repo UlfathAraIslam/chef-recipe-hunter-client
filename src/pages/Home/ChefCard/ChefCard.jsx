@@ -22,7 +22,7 @@ const ChefCard = ({ chef }) => {
                         <Card.Text>
                             Likes: {rating}
                         </Card.Text>
-                        <Link to='/recipies :id'><Button variant="primary">View Recipes</Button></Link>
+                        <Link to='/recipies'><Button variant="primary">View Recipes</Button></Link>
                     </Card.Body>
                 </Card>
             </Col>
