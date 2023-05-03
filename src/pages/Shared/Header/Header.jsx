@@ -4,15 +4,17 @@ import './Header.css'
 
 const Header = () => {
 
-return (
+    return (
 
-        <Container fluid className='banner'>
+        <div className='banner'>
 
-            <div className='banner-text'>
-                <h1>Welcome to Japanese cousine</h1>
-                <p>Discover new flavors and tastes</p>
+            <div className='banner'>
+                <Container>
+                    <h1>Welcome to Japanese Cuisine</h1>
+                    <p>Discover new flavors and tastes</p>
+                </Container>
             </div>
-        </Container>
+        </div>
     )
 };
 

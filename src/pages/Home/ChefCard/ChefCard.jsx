@@ -10,7 +10,7 @@ const ChefCard = ({ chef }) => {
         <Row  className="mb-4">
             <Col>
                 <Card className='h-100'>
-                    <Card.Img style={{ height: '250px'}} variant="top" src={picture} />
+                    <Card.Img  fluid style={{ height: '250px'}} variant="top" src={picture} />
                     <Card.Body>
                         <Card.Title>{name}</Card.Title>
                         <Card.Text>
