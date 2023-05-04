@@ -9,7 +9,7 @@ const Footer = () => {
                     <Col md={4}>
                         <h5>About Us</h5>
                         <p>
-                            Japanese cuisine is a unique and diverse culinary tradition that has been refined over centuries. From delicate sushi rolls to hearty ramen bowls, Japanese cuisine offers something for everyone. At our restaurant, we strive to offer an authentic Japanese dining experience with fresh, high-quality ingredients and expertly prepared dishes. Whether you're a sushi lover or a fan of Japanese comfort food, we invite you to join us for a delicious meal.
+                            Japanese food is a unique and diverse culinary tradition that has been refined over centuries. From delicate sushi rolls to hearty ramen bowls, Japanese cuisine offers something for everyone. 
                         </p>
                     </Col>
                     <Col md={4}>
