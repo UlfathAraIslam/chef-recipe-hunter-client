@@ -1,15 +1,16 @@
 import React, { useContext, useState } from 'react';
 import Navigationbar from '../../Shared/Navigationbar/Navigationbar';
-import { Button, Container, Form } from 'react-bootstrap';
+import { Button, Container, Form, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
 import { AuthContext } from '../../../providers/AuthProvider';
 
 const Register = () => {
-    const {createUser, setUser} = useContext(AuthContext);
+  const { createUser, setUser, user, updateUserProfile } = useContext(AuthContext);
 
   const [name, setName] = useState('');
   const [photoUrl, setPhotoUrl] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const handleNameChange = (event) => {
     setName(event.target.value);
@@ -19,6 +20,20 @@ const Register = () => {
     setPhotoUrl(event.target.value);
   };
 
+
+  const handlePasswordChange = (event) => {
+    const form = event.target.form;
+    const password = form.password.value;
+
+    if (password.length < 6) {
+      setPasswordError('Password must be at least 6 characters');
+    }
+    
+    else {
+      setPasswordError('');
+    }
+  };
+
   const handleRegister = event => {
     event.preventDefault();
     const form = event.target;
@@ -26,31 +41,44 @@ const Register = () => {
     const photoUrl = form.photoUrl.value;
     const email = form.email.value;
     const password = form.password.value;
-  
-    console.log(name,photoUrl,email,password);
-  
+
+    console.log(name, photoUrl, email, password);
+
     createUser(name, photoUrl, email, password)
       .then((userCredential) => {
         const createdUser = userCredential.user;
         return createdUser.updateProfile({
           displayName: name,
           photoURL: photoUrl,
+
         })
       })
       .then(() => {
         const createdUser = auth.currentUser;
         setUser(createdUser);
+        form.reset()
+          .catch(error => {
+            console.log(error);
+          });
+
+
+        // update profile
+        updateUserProfile(auth.currentUser, {
+          displayName: name,
+          photoUrl: photoUrl
+        })
+          .then(() => {
+            console.log("user profile updated");
+          });
       })
       .catch(error => {
-          console.log(error);
-      })
-  }
-  
-  
+        console.log(error);
+      });
+  };
 
   return (
     <>
-      <Navigationbar />
+      <Navigationbar user={user} />
       <Container className='mx-auto mt-5'>
         <Form onSubmit={handleRegister}>
           <Form.Group className="mb-3" controlId="formBasicName">
@@ -70,7 +98,8 @@ const Register = () => {
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" name='password' required placeholder="Password" />
+            <Form.Control type="password" name='password' required placeholder="Password" onChange={handlePasswordChange} />
+            {passwordError && <Alert variant="danger">{passwordError}</Alert>}
           </Form.Group>
 
           <Button variant="primary" type="submit">
@@ -88,3 +117,4 @@ const Register = () => {
 };
 
 export default Register;
+

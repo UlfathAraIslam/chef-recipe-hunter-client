@@ -15,7 +15,7 @@ Install dependencies:
 
 To start the development server, run `npm start`.
 
-Once the server is running, open a web browser and navigate to http://localhost:5173/ to access the application.
+Once the server is running, open a web browser and navigate to https://chef-recipe-hunter-assig-3eecf.web.app/ to access the application.
 
 ## Features
 
@@ -34,4 +34,4 @@ This project includes a custom hook for handling form inputs. The `useForm` hook
 
 ## Live Site
 
-You can view a live demo of this project at https://your-project.netlify.app.
+You can view a live demo of this project at https://chef-recipe-hunter-assig-3eecf.web.app/.
