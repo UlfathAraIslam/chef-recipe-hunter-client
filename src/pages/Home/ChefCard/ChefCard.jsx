@@ -7,10 +7,10 @@ import { Link } from 'react-router-dom';
 const ChefCard = ({ chef }) => {
     const {name, picture, yearsOfExperience, numberOfRecipes, rating} = chef;
     return (
-        <Row  className="mb-4">
+        <Row  className="mb-4 mt-5">
             <Col>
                 <Card className='h-100'>
-                    <Card.Img  fluid style={{ height: '250px'}} variant="top" src={picture} />
+                    <Card.Img style={{ height: '250px'}} variant="top" src={picture} />
                     <Card.Body>
                         <Card.Title>{name}</Card.Title>
                         <Card.Text>

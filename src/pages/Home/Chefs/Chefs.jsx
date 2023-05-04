@@ -13,13 +13,14 @@ const Chefs = () => {
     }, []);
 
     return (
-        <Row>
-            {chefs.map(chef => (
-                <Col lg={4} sm={12}>
+        <Row xs={1} sm={2} md={3} lg={4} className="g-4">
+            {chefs.map((chef) => (
+                <Col key={chef.id}>
                     <ChefCard chef={chef} />
                 </Col>
             ))}
         </Row>
+
     );
 };
 
