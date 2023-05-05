@@ -5,6 +5,7 @@ import { Col, Row } from 'react-bootstrap';
 
 const Chefs = () => {
     const [chefs, setChefs] = useState([]);
+    // console.log(chefs);
 
     useEffect(() => {
         fetch(`https://b7a10-chef-recipe-hunter-server-side-ulfath-ara-ulfatharaislam.vercel.app/chefs`)
