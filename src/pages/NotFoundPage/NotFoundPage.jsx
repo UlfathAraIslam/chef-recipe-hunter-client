@@ -6,7 +6,7 @@ const NotFoundPage = () => {
   const { error, status } = useRouteError() || {};
   return (
       <div className='text-center mt-5'>
-      <img src='error-image.png' alt="Oops! Page not found." />
+      <img src={errorImage} width='400' height='400' alt="Oops! Page not found." />
         <h1>Oops! Page not found.</h1>
         <p>The page you are looking for does not exist.</p>
         <h2>

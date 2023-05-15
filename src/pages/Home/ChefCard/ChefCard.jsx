@@ -5,7 +5,7 @@ import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const ChefCard = ({ chef }) => {
-    const {name, picture, yearsOfExperience, numberOfRecipes, rating} = chef;
+    const {name, picture, yearsOfExperience, numberOfRecipes, rating,id} = chef;
     return (
         <Row  className="mb-4 mt-5">
             <Col>
@@ -22,7 +22,7 @@ const ChefCard = ({ chef }) => {
                         <Card.Text>
                             Likes: {rating}
                         </Card.Text>
-                        <Link to='/recipies'><Button variant="primary">View Recipes</Button></Link>
+                        <Link to={`/chefs/${id}`}><Button variant="primary">View Recipes</Button></Link>
                     </Card.Body>
                 </Card>
             </Col>
