@@ -6,7 +6,7 @@ import Chefs from '../pages/Home/Chefs/Chefs';
 import Menu from '../pages/Home/Menu/Menu';
 import Event from '../pages/Home/Event/Event';
 import Navigationbar from '../pages/Shared/Navigationbar/Navigationbar';
-
+import './Main.css';
 
 
 const Main = () => {

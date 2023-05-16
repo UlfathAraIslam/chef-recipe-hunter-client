@@ -3,6 +3,7 @@ import Navigationbar from '../Shared/Navigationbar/Navigationbar';
 import Footer from '../Shared/Footer/Footer';
 
 
+
 const Blog = () => {
     return (
         <div className='container'>

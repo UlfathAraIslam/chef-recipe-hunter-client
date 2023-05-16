@@ -1,13 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layouts/Main";
 import Home from "../pages/Home/Home/Home";
-import RecipiesLayout from "../layouts/RecipiesLayout";
 import Recipies from "../pages/Recipies/Recipies/Recipies";
 import Chefs from "../pages/Home/Chefs/Chefs";
 import Blog from "../pages/Blog/Blog";
 import Login from "../pages/Login/Login/Login";
 import Register from "../pages/Login/Register/Register";
 import NotFoundPage from "../pages/NotFoundPage/NotFoundPage";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
 
     {
         path: '/chefs/:id',
-        element: <Recipies/>,
+        element: <PrivateRoute><Recipies/></PrivateRoute>,
         loader: async ({ params }) => {
             const response = await fetch(`https://b7a10-chef-recipe-hunter-server-side-ulfath-ara-ulfatharaislam.vercel.app/chefs/${params.id}`);
             const data = await response.json();

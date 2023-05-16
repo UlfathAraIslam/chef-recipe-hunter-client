@@ -1,21 +1,19 @@
-
-
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import './Navigationbar.css';
 
 const Navigationbar = () => {
-  const { user, logOut} = useContext(AuthContext);
 
+  const { user, logOut } = useContext(AuthContext);
   const [name, setName] = useState('');
   const [photoUrl, setPhotoUrl] = useState('');
   const [isHovering, setIsHovering] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     if (user) {
-      // Update the name and photo URL state if user data is available
       setName(user.displayName || '');
       setPhotoUrl(user.photoURL || '');
     }
@@ -24,7 +22,7 @@ const Navigationbar = () => {
   const handleLogout = () => {
     logOut()
       .then()
-      .catch(error => console.log(error));
+      .catch((error) => console.log(error));
   };
 
   const handleMouseEnter = () => {
@@ -41,17 +39,27 @@ const Navigationbar = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="me-auto">
-          <Link as={Link} to="/" className="text-decoration-none text-secondary" style={{ marginRight: '50px' }}>
+          <NavLink
+            to="/"
+            className={`text-decoration-none ${
+              location.pathname === '/' ? 'text-primary' : 'text-secondary'
+            }`}
+            style={{ marginRight: '50px' }}
+            activeClassName="active-route"
+            exact
+          >
             Home
-          </Link>
-          <Link as={Link} to="/blog" className="text-decoration-none text-secondary me-4">
+          </NavLink>
+          <NavLink
+            to="/blog"
+            className={`text-decoration-none ${
+              location.pathname === '/blog' ? 'text-primary' : 'text-secondary'
+            } me-4`}
+            activeClassName="active-route"
+            exact
+          >
             Blog
-          </Link>
-          {user && (
-            <Link as={Link} to="/" className="text-decoration-none text-secondary">
-              Recipe
-            </Link>
-          )}
+          </NavLink>
         </Nav>
         <Nav>
           {user && (
@@ -62,16 +70,22 @@ const Navigationbar = () => {
                   onMouseEnter={handleMouseEnter}
                   onMouseLeave={handleMouseLeave}
                 >
-                  <img src={photoUrl} alt={name} className="user-photo rounded me-4" width={50} height={50}  />
+                  <img
+                    src={photoUrl}
+                    alt={name}
+                    className="user-photo rounded me-4"
+                    width={50}
+                    height={50}
+                  />
                   {isHovering && <span className="user-name mb-5">{name}</span>}
                 </div>
               )}
-              <Button onClick={handleLogout}>Log out</Button>
+              <Button className='primaryButton' onClick={handleLogout}>Log out</Button>
             </>
           )}
           {!user && (
             <Link to="/login">
-              <Button>Login</Button>
+              <Button className='primaryButton'>Login</Button>
             </Link>
           )}
         </Nav>
@@ -81,3 +95,5 @@ const Navigationbar = () => {
 };
 
 export default Navigationbar;
+
+

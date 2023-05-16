@@ -1,15 +1,22 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Navigationbar from '../../Shared/Navigationbar/Navigationbar';
 import { Alert, Button, Container, Form } from 'react-bootstrap';
 import { AuthContext } from '../../../providers/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Footer from '../../Shared/Footer/Footer';
 
 const Register = () => {
-
+  const navigate = useNavigate();
   const { createUser,user } = useContext(AuthContext);
 
   const [passwordError, setPasswordError] = useState('');
+  const [submitError, setSubmitError] = useState(null);
+
+  useEffect(() => {
+    if (user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   const handleRegister = event =>{
     event.preventDefault();
@@ -19,6 +26,11 @@ const Register = () => {
     const photoUrl = form.photoUrl.value;
     const password = form.password.value;
     console.log(name, email, password,photoUrl);
+
+     if (!email || !password) {
+      setSubmitError('Please enter both email and password.');
+      return;
+    }
 
     createUser(email,password)
     .then(result => {
@@ -56,14 +68,15 @@ const Register = () => {
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
-            <Form.Control type="email" name='email' required placeholder="Enter email" />
+            <Form.Control type="email" name='email'  placeholder="Enter email" />
+            {submitError && <Alert variant="danger" className="mt-3">{submitError}</Alert>}
           </Form.Group>
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
-            <Form.Control type="password" name='password' required placeholder="Password" onChange={handlePasswordChange} />
+            <Form.Control type="password" name='password'  placeholder="Password" onChange={handlePasswordChange} />
             {passwordError && <Alert variant="danger">{passwordError}</Alert>}
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="primary primaryButton" type="submit">
             Register
           </Button>
           <br />

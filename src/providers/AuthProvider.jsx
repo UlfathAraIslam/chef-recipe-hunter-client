@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from "react";
-import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut} from "firebase/auth";
 import app from "../firebase/firebase.config";
 import { Spinner } from "react-bootstrap";
 
@@ -20,11 +20,6 @@ const AuthProvider = ({children}) => {
     const signIn = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password);
-    }
-
-    const updateUserProfile=() => {
-        setLoading(true);
-        return updateProfile(auth);
     }
 
     const logOut = () => {
@@ -62,7 +57,6 @@ const AuthProvider = ({children}) => {
         signIn,
         signInWithGitHub,
         signInWithGoogle,
-        updateUserProfile,
         logOut
 
     }
